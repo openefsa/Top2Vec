@@ -475,7 +475,7 @@ class Top2Vec:
             word_index_temp = self.word_index
             self.word_index = None
 
-        if self.model:
+        if hasattr(self,'model'):
             self.model.callbacks = None
         dump(self, file)
 
