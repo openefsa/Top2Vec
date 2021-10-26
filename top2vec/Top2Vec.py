@@ -475,7 +475,8 @@ class Top2Vec:
             word_index_temp = self.word_index
             self.word_index = None
 
-        self.model.callbacks = None
+        if self.model:
+            self.model.callbacks = None
         dump(self, file)
 
         self.document_index = document_index_temp
