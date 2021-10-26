@@ -56,16 +56,16 @@ class EpochLogger(CallbackAny2Vec):
 
     def on_epoch_begin(self, model):
         self.t.update(1)
-        #self.t.write("Epoch #{}/{} start".format(self.epoch,self.numEpochs))
+        self.t.write("Epoch #{}/{} start".format(self.epoch,self.numEpochs))
 
     def on_epoch_end(self, model):
-        #self.t.write("Epoch #{} end".format(self.epoch))
+        self.t.write("Epoch #{} end".format(self.epoch))
         self.epoch += 1
 
 
 
 logger = logging.getLogger('top2vec')
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.INFO)
 sh = logging.StreamHandler()
 sh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(sh)
