@@ -56,10 +56,10 @@ class EpochLogger(CallbackAny2Vec):
 
     def on_epoch_begin(self, model):
         self.t.update(1)
-        self.t.write("Epoch #{}/{} start".format(self.epoch,self.numEpochs))
+        #self.t.write("Epoch #{}/{} start".format(self.epoch,self.numEpochs))
 
     def on_epoch_end(self, model):
-        self.t.write("Epoch #{} end".format(self.epoch))
+        #self.t.write("Epoch #{} end".format(self.epoch))
         self.epoch += 1
 
 
@@ -562,7 +562,7 @@ class Top2Vec:
         batches = int(len(train_corpus) / batch_size)
         extra = len(train_corpus) % batch_size
 
-        for ind in range(0, batches):
+        for ind in tqdm(range(0, batches)):
             document_vectors.append(self.embed(train_corpus[current:current + batch_size]))
             current += batch_size
 
